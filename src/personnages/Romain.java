@@ -9,6 +9,4 @@ public class Romain extends Personnage {
 	protected String donnerAuteur() {
 		return "Le romain ";
 	}
-	
-	
 }
