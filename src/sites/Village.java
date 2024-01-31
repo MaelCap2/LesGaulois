@@ -16,12 +16,29 @@ public class Village {
 		return this.chef;
 	}
 	
-	public boolean ajouterSoldat(Gaulois g) {
-		if (this.nbGaulois == 50) {
+	public boolean ajouterVillageois(Gaulois g) {
+		if (this.nbGaulois == 4) {
+			System.out.println("Le gaulois " + getChef().getNom() + " : << Désolé " + g.getNom() + " mon village est déjà bien rempli. >>.");
 			return false;
 		} else {
 			this.gaulois[this.nbGaulois] = g;
+			System.out.println("Le gaulois " + getChef().getNom() + " : << Bienvenue " + g.getNom() + " ! >>.");
+			this.nbGaulois ++;
 			return true;
 		}
+	}
+	
+	public void afficherVillageois() {
+		System.out.println("Le village de " + getChef().getNom() + " est habité par :");
+		for(int i = 0; i < this.nbGaulois; i ++) {
+			System.out.println("- " + gaulois[i].getNom());
+		}
+	}
+	
+	public void changerChef(Gaulois g) {
+		Gaulois gau = new Gaulois(getChef().getNom(), getChef().getForce());
+		this.chef = g;
+		System.out.println("Le gaulois " + gau.getNom() + " : << Je laisse mon grand bouclier au grand " + getChef().getNom() + " >>.");
+		getChef().parler("Merci !");
 	}
 }

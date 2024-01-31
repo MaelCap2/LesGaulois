@@ -13,6 +13,10 @@ public abstract class Personnage {
 		return this.nom;
 	}
 	
+	public int getForce() {
+		return this.force;
+	}
+	
 	public void parler(String t) {
 		System.out.println(donnerAuteur() + getNom() + " : << " + t + " >>.");
 	}

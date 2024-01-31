@@ -8,5 +8,7 @@ public class Soldat extends Romain{
 		this.grade = g;
 	}
 	
-
+	public Grade getGrade() {
+		return this.grade;
+	}
 }
