@@ -2,9 +2,9 @@ package personnages;
 
 public abstract class Personnage {
 	private String nom;
-	private int force;
+	private double force;
 	
-	public Personnage(String n, int f) {
+	public Personnage(String n, double f) {
 		this.nom = n;
 		this.force = f;
 	}
@@ -13,8 +13,12 @@ public abstract class Personnage {
 		return this.nom;
 	}
 	
-	public int getForce() {
+	public double getForce() {
 		return this.force;
+	}
+	
+	public void setForce(double f) {
+		this.force = f;
 	}
 	
 	public void parler(String t) {
@@ -23,17 +27,5 @@ public abstract class Personnage {
 	
 	protected abstract String donnerAuteur();
 	
-	public void recevoirCoup(int c) {
-		this.force = this.force - c;
-		if(this.force < 0) {
-			this.force = 0;
-		}
-		if(this.force > 0) {
-			parler("Aïe !");
-		} 
-		else {
-			parler("J'abandonne...");
-		}
-	}
-
+	public abstract void recevoirCoup(double c);
 }

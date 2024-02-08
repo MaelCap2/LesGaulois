@@ -1,12 +1,11 @@
 package personnages;
 
 public class Gaulois extends Personnage {
-	private float newForce;
+	private double newForce;
 	private float potion;
 	
-	public Gaulois(String n, int f) {
+	public Gaulois(String n, double f) {
 		super(n, f);
-		System.out.println(this.getForce());
 		this.potion = 1;
 		this.newForce = this.potion * this.getForce();
 	}
@@ -19,11 +18,11 @@ public class Gaulois extends Personnage {
 		this.potion = x;
 	}
 	
-	public float getNewForce() {
+	public double getNewForce() {
 		return this.newForce;
 	}
 	
-	public void setNewForce(float x) {
+	public void setNewForce(double x) {
 		this.newForce = x;
 	}
 	
@@ -37,14 +36,12 @@ public class Gaulois extends Personnage {
 				druide.parler("Tiens " + this.getNom() + " un peu de potion magique.");
 				druide.setNbPotions(druide.getNbPotions() - 1);
 				this.potion = druide.getPuissance();
-				this.newForce = this.getForce() * this.getPotion();
 			} else {
 				druide.parler("Non, " + this.getNom() + " Non !... Et tu le sais très bien !");
 			}
 		} else {
 			druide.parler("Désolé " + this.getNom() + " il n'y a plus une seule goute de potion.");
 		}
-		System.out.println(this.getNewForce());
 	}
 	
 	public boolean finCombat(Personnage p) {
@@ -56,9 +53,25 @@ public class Gaulois extends Personnage {
 	}
 	
 	public void frapper(Romain p) {
-		System.out.println(donnerAuteur() + getNom() + " donne un grand coup de force " + this.getNewForce() / 3 + " au romain " + p.getNom() + ".");
-		int f = (int) (this.getForce() * this.newForce / 3);
-		p.recevoirCoup(f);
-		this.potion = this.getPotion() - 1/2;
+		this.setNewForce(this.getPotion() * this.getForce());
+		System.out.println(donnerAuteur() + getNom() + " donne un grand coup de force " + this.getNewForce() + " au romain " + p.getNom() + ".");
+		p.recevoirCoup(this.getNewForce());
+		if(this.getPotion() > 1) {
+			this.potion = this.getPotion() - 1/2;
+		}
+	}
+	
+	public void recevoirCoup(double c) {
+		double f = c / this.getPotion();
+		this.setForce(this.getForce() - f);
+		if(this.getForce() < 0) {
+			this.setForce(0);
+		}
+		if(this.getForce() > 0) {
+			parler("Aïe !");
+		} 
+		else {
+			parler("J'abandonne...");
+		}
 	}
 }
