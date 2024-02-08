@@ -25,6 +25,8 @@ public abstract class Personnage {
 		System.out.println(donnerAuteur() + getNom() + " : << " + t + " >>.");
 	}
 	
+	public abstract void frapper(Personnage p);
+	
 	protected abstract String donnerAuteur();
 	
 	public abstract void recevoirCoup(double c);

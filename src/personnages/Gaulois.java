@@ -52,7 +52,7 @@ public class Gaulois extends Personnage {
 		}
 	}
 	
-	public void frapper(Romain p) {
+	public void frapper(Personnage p) {
 		this.setNewForce(this.getPotion() * this.getForce());
 		System.out.println(donnerAuteur() + getNom() + " donne un grand coup de force " + this.getNewForce() + " au romain " + p.getNom() + ".");
 		p.recevoirCoup(this.getNewForce());
