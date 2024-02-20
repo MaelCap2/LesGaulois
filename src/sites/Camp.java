@@ -10,7 +10,7 @@ public class Camp {
 	
 	public Camp(Soldat c) {
 		this.commandant = c;
-		c.parler("Je suis en charge de créer un nouveau camp romain");
+		//c.parler("Je suis en charge de créer un nouveau camp romain");
 	}
 	
 	public Soldat getCommandant() {
@@ -27,11 +27,11 @@ public class Camp {
 	
 	public boolean ajouterSoldat(Soldat s) {
 		if (this.nbSoldats == this.soldats.length) {
-			System.out.println("Le romain " + this.commandant.getNom() + " : << Désolé " + s.getNom() + " notre camp est complet ! >>.");
+			//System.out.println("Le romain " + this.commandant.getNom() + " : << Désolé " + s.getNom() + " notre camp est complet ! >>.");
 			return false;
 		} else {
 			this.soldats[this.nbSoldats] = s;
-			System.out.println("Le romain " + s.getNom() + " : << Je met mon épée au service de Rome dans le camp dirigé par " + this.commandant.getNom() + " >>.");
+			//System.out.println("Le romain " + s.getNom() + " : << Je met mon épée au service de Rome dans le camp dirigé par " + this.commandant.getNom() + " >>.");
 			this.nbSoldats ++;
 			return true;
 		}

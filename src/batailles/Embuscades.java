@@ -1,7 +1,6 @@
 package batailles;
 
 import sites.Village;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -11,8 +10,8 @@ import sites.Camp;
 
 public class Embuscades extends Batailles {
 	
-	public Embuscades(String n, Village v, Camp c) {
-		super(n, v, c);
+	public Embuscades(String n, Village v, Camp c, int nbG, int nbS) {
+		super(n, v, c, nbG, nbS);
 	}
 
 	public String decrireContexte() {
@@ -23,13 +22,13 @@ public class Embuscades extends Batailles {
 	public String chosirCombattants(List<Gaulois> g, List<Soldat> s) {
 		String combattants = "Il s'agit de ";
 		for(int i = 0; i < g.size() - 2; i ++) {
-			combattants = combattants + g.get(i) + ", ";
+			combattants = combattants + g.get(i).getNom() + ", ";
 		}
-		combattants = combattants + g.get(g.size() - 2) + " et " + g.get(g.size() - 1) + ".\nMais cachés derrière des bosquets se cachent ";
+		combattants = combattants + g.get(g.size() - 2).getNom() + " et " + g.get(g.size() - 1).getNom() + ".\nMais cachés derrière des bosquets se cachent ";
 		for(int i = 0; i < s.size() - 2; i ++) {
-			combattants = combattants + s.get(i) + ", ";
+			combattants = combattants + s.get(i).getNom() + ", ";
 		}
-		combattants = combattants + s.get(s.size() - 2) + " et " + s.get(s.size() - 1) + ".";
+		combattants = combattants + s.get(s.size() - 2).getNom() + " et " + s.get(s.size() - 1).getNom() + ".\n";
 		return combattants;
 	}
 	
@@ -47,9 +46,9 @@ public class Embuscades extends Batailles {
 		String nom = "donnerResultat";
 		return nom;
 	}
-	
-	public List<Gaulois> choisirGaulois(int n, Village v){
-        List<Gaulois> selectedElements = new ArrayList<>();
+
+	public List<Gaulois> chosirGaulois(int n, Village v) {
+		List<Gaulois> selectedElements = new ArrayList<>();
         Random random = new Random();        
         while (selectedElements.size() < n) {
             int randomIndex = random.nextInt(v.getNbGaulois());
@@ -59,14 +58,14 @@ public class Embuscades extends Batailles {
         }
         return selectedElements;
 	}
-	
-	public List<Soldat> choisirSoldats(int n, Camp v){
-        List<Soldat> selectedElements = new ArrayList<>();
+
+	public List<Soldat> chosirSoldats(int n, Camp c) {
+		List<Soldat> selectedElements = new ArrayList<>();
         Random random = new Random();        
         while (selectedElements.size() < n) {
-            int randomIndex = random.nextInt(v.getNbSoldats());
-            if (!selectedElements.contains(v.getSoldats(randomIndex))) {
-                selectedElements.add(v.getSoldats(randomIndex));
+            int randomIndex = random.nextInt(c.getNbSoldats());
+            if (!selectedElements.contains(c.getSoldats(randomIndex))) {
+                selectedElements.add(c.getSoldats(randomIndex));
             }
         }
         return selectedElements;

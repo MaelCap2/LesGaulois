@@ -46,7 +46,7 @@ public class TestBataille {
 		camp.ajouterSoldat(quintilius);
 		
 		Conteur goscinny = new Conteur("Goscinny");
-		Embuscades embuscade = new Embuscades("Forêt", village, camp);
+		Embuscades embuscade = new Embuscades("embuscade", village, camp, 4, 2);
 		goscinny.histoire(embuscade);
 		}
 }

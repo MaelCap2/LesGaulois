@@ -9,7 +9,7 @@ public class Village {
 	
 	public Village(Gaulois c) {
 		this.chef = c;
-		c.parler("Je suis un grand guerrier et je vais créer mon village");
+		//c.parler("Je suis un grand guerrier et je vais créer mon village");
 	}
 	
 	public Gaulois getChef() {
@@ -26,11 +26,11 @@ public class Village {
 	
 	public boolean ajouterVillageois(Gaulois g) {
 		if (this.nbGaulois == this.gaulois.length) {
-			System.out.println("Le gaulois " + getChef().getNom() + " : << Désolé " + g.getNom() + " mon village est déjà bien rempli. >>.");
+			//System.out.println("Le gaulois " + getChef().getNom() + " : << Désolé " + g.getNom() + " mon village est déjà bien rempli. >>.");
 			return false;
 		} else {
 			this.gaulois[this.nbGaulois] = g;
-			System.out.println("Le gaulois " + getChef().getNom() + " : << Bienvenue " + g.getNom() + " ! >>.");
+			//System.out.println("Le gaulois " + getChef().getNom() + " : << Bienvenue " + g.getNom() + " ! >>.");
 			this.nbGaulois ++;
 			return true;
 		}
