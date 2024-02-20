@@ -16,8 +16,16 @@ public class Village {
 		return this.chef;
 	}
 	
+	public int getNbGaulois() {
+		return this.nbGaulois;
+	}
+	
+	public Gaulois getGaulois(int n) {
+		return gaulois[n];
+	}
+	
 	public boolean ajouterVillageois(Gaulois g) {
-		if (this.nbGaulois == 4) {
+		if (this.nbGaulois == this.gaulois.length) {
 			System.out.println("Le gaulois " + getChef().getNom() + " : << Désolé " + g.getNom() + " mon village est déjà bien rempli. >>.");
 			return false;
 		} else {

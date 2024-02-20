@@ -17,9 +17,16 @@ public class Camp {
 		return this.commandant;
 	}
 	
+	public int getNbSoldats() {
+		return this.nbSoldats;
+	}
+	
+	public Soldat getSoldats(int n) {
+		return this.soldats[n];
+	}
 	
 	public boolean ajouterSoldat(Soldat s) {
-		if (this.nbSoldats == 3) {
+		if (this.nbSoldats == this.soldats.length) {
 			System.out.println("Le romain " + this.commandant.getNom() + " : << Désolé " + s.getNom() + " notre camp est complet ! >>.");
 			return false;
 		} else {
@@ -39,7 +46,7 @@ public class Camp {
 	
 	public void changerCommandant(Soldat s) {
 		if (s.getGrade() == Grade.CENTURION) {
-			Soldat sol = new Soldat(getCommandant().getNom(), getCommandant().getForce(), getCommandant().getGrade());
+			Soldat sol = new Soldat(getCommandant().getNom(), getCommandant().getForce(), getCommandant().getEquipement(0), getCommandant().getEquipement(1), getCommandant().getEquipement(2), getCommandant().getGrade());
 			this.commandant = s;
 			System.out.println("Le romain " + getCommandant().getNom() + " : << Moi " + getCommandant().getNom() + " je prends la direction du camp romain. >>.");
 		} else {

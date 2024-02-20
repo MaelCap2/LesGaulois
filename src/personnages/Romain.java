@@ -20,6 +20,10 @@ public class Romain extends Personnage {
 		}
 	}
 	
+	public Romain(String n, double f) {
+		super(n, f);
+	}
+	
 	public boolean getEquipement(int i) {
 		return this.equipement[i];
 	}

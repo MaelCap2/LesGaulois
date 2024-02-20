@@ -9,16 +9,16 @@ import sites.Village;
 public class TestSites {
 	public static void main(String[] args) {
 		Gaulois vercingétorix = new Gaulois("Vercingétorix", 5);
-		Soldat minus = new Soldat("Minus", 2, Grade.SOLDAT);
+		Soldat minus = new Soldat("Minus", 2, true, true, true, Grade.SOLDAT);
 		Village village = new Village(vercingétorix);
 		Camp camp = new Camp(minus);
-		Soldat brutus = new Soldat("Brutus", 5, Grade.CENTURION);
+		Soldat brutus = new Soldat("Brutus", 5, true, true, true, Grade.CENTURION);
 		camp.ajouterSoldat(brutus);
-		Soldat milexcus = new Soldat("Milexcus", 2, Grade.SOLDAT);
+		Soldat milexcus = new Soldat("Milexcus", 2, true, true, true, Grade.SOLDAT);
 		camp.ajouterSoldat(milexcus);
-		Soldat tullius_octopus = new Soldat("Tullius Octopus", 2, Grade.TESSERARIUS);
+		Soldat tullius_octopus = new Soldat("Tullius Octopus", 2, true, true, true, Grade.TESSERARIUS);
 		camp.ajouterSoldat(tullius_octopus);
-		Soldat ballondebaudrus = new Soldat("Ballondebaudrus", 3, Grade.OPTIO);
+		Soldat ballondebaudrus = new Soldat("Ballondebaudrus", 3, true, true, true, Grade.OPTIO);
 		camp.ajouterSoldat(ballondebaudrus);
 		Gaulois agecanonix = new Gaulois("Agecanonix", 1);
 		village.ajouterVillageois(agecanonix);
@@ -33,8 +33,8 @@ public class TestSites {
 		village.afficherVillageois();
 		camp.afficherCamp();
 		Gaulois abraracourcix = new Gaulois("Abraracourcix", 5);
-		Soldat briseradius = new Soldat("Briseradius", 4, Grade.SOLDAT);
-		Soldat chorus = new Soldat("Chorus", 4, Grade.CENTURION);
+		Soldat briseradius = new Soldat("Briseradius", 4, true, true, true, Grade.SOLDAT);
+		Soldat chorus = new Soldat("Chorus", 4, true, true, true, Grade.CENTURION);
 		village.changerChef(abraracourcix);
 		camp.changerCommandant(briseradius);
 		camp.changerCommandant(chorus);

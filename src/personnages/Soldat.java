@@ -8,6 +8,11 @@ public class Soldat extends Romain{
 		this.grade = g;
 	}
 	
+	public Soldat(String n, double f, Grade g) {
+		super(n, f);
+		this.grade = g;
+	}
+	
 	public Grade getGrade() {
 		return this.grade;
 	}
