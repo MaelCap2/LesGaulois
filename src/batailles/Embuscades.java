@@ -15,7 +15,7 @@ public class Embuscades extends Batailles {
 	}
 
 	public String decrireContexte() {
-		String contexte = "Dans une sombre forêt dans un coin reculé de la Gaule, quatre comparses se promènent.\n";
+		String contexte = "Dans une sombre forêt dans un coin reculé de la Gaule, " + this.getNbGaulois() + " comparses se promènent.\n";
 		return contexte;
 	}
 
