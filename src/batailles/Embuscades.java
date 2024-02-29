@@ -126,5 +126,4 @@ public class Embuscades extends Batailles {
 		int randomIndex = random.nextInt(s.size());
 		return s.get(randomIndex);
 	}
-	
 }
