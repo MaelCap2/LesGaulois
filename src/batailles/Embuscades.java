@@ -51,33 +51,38 @@ public class Embuscades extends Batailles {
 		for (int i = 0; i < this.getSoldats().size(); i ++) {
 			combattants.add(this.getSoldats(i));
 		}
-		List<Gaulois> cGaulois = new ArrayList();
-		cGaulois = this.getGaulois();
-		List<Soldat> cSoldats = new ArrayList();
-		cSoldats = this.getSoldats();
-		while(!cGaulois.isEmpty() && !cSoldats.isEmpty()) {
+		while(!getGaulois().isEmpty() && !getSoldats().isEmpty()) {
 			Personnage p = this.choisirFrappeur(combattants);
 			if(p instanceof Gaulois) {
-				Soldat s = this.choisirSoldat(cSoldats);
+				Soldat s = this.choisirSoldat(getSoldats());
 				p.frapper(s);
 				if (s.getForce() <= 0) {
 					combattants.remove(s);
-					cSoldats.remove(s);
+					getSoldats().remove(s);
 				}
 			} else {
-				Gaulois g = this.choisirGaulois(cGaulois);
+				Gaulois g = this.choisirGaulois(getGaulois());
 				p.frapper(g);
 				if (g.getForce() <= 0) {
 					combattants.remove(g);
-					cGaulois.remove(g);
+					getGaulois().remove(g);
 				}
 			}
 		}
 	}
 
 	public String donnerResultat() {
-		String nom = "donnerResultat";
-		return nom;
+		String resultat = "";
+		if (getGaulois().isEmpty()) {
+			resultat = resultat + "L'attaque fut tellement rapide et inattendue que nos malheureux gaulois n'ont pas eu le temps de réagir. \nIls furent ligotés et emmenés dans le camp de " + this.getCamp().getCommandant().getNom() + ".";
+		} else {
+			resultat = resultat + "Malgré cette sournoise attaque, nos promeneurs s'en sont sortis indemnes. \nIls pouvaient compter sur la force de ";
+			for(int i = 0; i < this.getGaulois().size() - 2; i ++) {
+				resultat = resultat + this.getGaulois().get(i).getNom() + ", ";
+			}
+			resultat = resultat + this.getGaulois().get(this.getGaulois().size() - 2).getNom() + " et " + this.getGaulois().get(this.getGaulois().size() - 1).getNom() + ".";
+		}
+		return resultat;
 	}
 
 	public List<Gaulois> chosirGaulois(int n, Village v) {

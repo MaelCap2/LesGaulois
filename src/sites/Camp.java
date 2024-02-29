@@ -46,7 +46,7 @@ public class Camp {
 	
 	public void changerCommandant(Soldat s) {
 		if (s.getGrade() == Grade.CENTURION) {
-			Soldat sol = new Soldat(getCommandant().getNom(), getCommandant().getForce(), getCommandant().getEquipement(0), getCommandant().getEquipement(1), getCommandant().getEquipement(2), getCommandant().getGrade());
+			Soldat sol = new Soldat(getCommandant().getNom(), getCommandant().getForce(), getCommandant().getGrade());
 			this.commandant = s;
 			System.out.println("Le romain " + getCommandant().getNom() + " : << Moi " + getCommandant().getNom() + " je prends la direction du camp romain. >>.");
 		} else {

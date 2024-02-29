@@ -12,7 +12,7 @@ public class TestGaulois {
 		Gaulois assurancetourix = new Gaulois("Assurancetourix", 2);
 		Gaulois abraracourcix = new Gaulois("Abraracourcix", 2);
 		Gaulois agecanonix = new Gaulois("Agecanonix", 2);
-		Soldat minus = new Soldat("Minus", 5, true, true, true, Grade.CENTURION);
+		Soldat minus = new Soldat("Minus", 5, Grade.CENTURION);
 		Druide panoramix = new Druide("Panoramix", 1, 3);
 		
 		asterix.boirePotion(panoramix);

@@ -4,6 +4,7 @@ import sites.Village;
 
 import java.util.ArrayList;
 import java.util.List;
+import personnages.Personnage;
 import personnages.Gaulois;
 import personnages.Soldat;
 import sites.Camp;
