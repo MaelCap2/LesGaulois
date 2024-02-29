@@ -1,6 +1,8 @@
 package batailles;
 
 import sites.Village;
+
+import java.util.ArrayList;
 import java.util.List;
 import personnages.Gaulois;
 import personnages.Soldat;
@@ -10,6 +12,8 @@ public abstract class Batailles {
 	private String nom;
 	private Village village;
 	private Camp camp;
+	private List<Gaulois> gaulois;
+	private List<Soldat> soldats;
 	private int nbGaulois;
 	private int nbSoldats;
 	
@@ -17,6 +21,8 @@ public abstract class Batailles {
 		this.nom = n;
 		this.village = v;
 		this.camp = c;
+		List<Soldat> gaulois = new ArrayList<>();
+		List<Soldat> soldats = new ArrayList<>();
 		this.nbGaulois = nbG;
 		this.nbSoldats = nbS;
 	}
@@ -41,10 +47,34 @@ public abstract class Batailles {
 		return this.nbSoldats;
 	}
 	
+	public List<Gaulois> getGaulois() {
+		return this.gaulois;
+	}
+	
+	public List<Soldat> getSoldats() {
+		return this.soldats;
+	}
+	
+	public Gaulois getGaulois(int i) {
+		return this.gaulois.get(i);
+	}
+	
+	public Soldat getSoldats(int i) {
+		return this.soldats.get(i);
+	}
+	
+	public void setGaulois(List<Gaulois> g) {
+		this.gaulois = g;	
+	}
+	
+	public void setSoldats(List<Soldat> s) {
+		this.soldats = s;	
+	}
+	
 	public abstract String decrireContexte();
 	public abstract String chosirCombattants(List<Gaulois> g, List<Soldat> s);
 	public abstract String preparerCombat();
-	public abstract String decrireCombat();
+	public abstract void decrireCombat();
 	public abstract String donnerResultat();
 	public abstract List<Gaulois> chosirGaulois(int n, Village v);
 	public abstract List<Soldat> chosirSoldats(int n, Camp c);

@@ -4,6 +4,7 @@ import sites.Village;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import personnages.Personnage;
 import personnages.Gaulois;
 import personnages.Soldat;
 import sites.Camp;
@@ -20,6 +21,8 @@ public class Embuscades extends Batailles {
 	}
 
 	public String chosirCombattants(List<Gaulois> g, List<Soldat> s) {
+		this.setGaulois(g);
+		this.setSoldats(s);
 		String combattants = "Il s'agit de ";
 		for(int i = 0; i < g.size() - 2; i ++) {
 			combattants = combattants + g.get(i).getNom() + ", ";
@@ -33,13 +36,43 @@ public class Embuscades extends Batailles {
 	}
 	
 	public String preparerCombat() {
-		String nom = "preparerCombat";
-		return nom;
+		String preparer = "Les soldats s'étaient bien préparés :\n";
+		for(int i = 0; i < this.getSoldats().size(); i ++) {
+			preparer = preparer + this.getSoldats(i).equipement(true, true, true);
+		}
+		return preparer;
 	}
 
-	public String decrireCombat() {
-		String nom = "decrireCombat";
-		return nom;
+	public void decrireCombat() {
+		List<Personnage> combattants = new ArrayList();
+		for (int i = 0; i < this.getGaulois().size(); i ++) {
+			combattants.add(this.getGaulois(i));
+		}
+		for (int i = 0; i < this.getSoldats().size(); i ++) {
+			combattants.add(this.getSoldats(i));
+		}
+		List<Gaulois> cGaulois = new ArrayList();
+		cGaulois = this.getGaulois();
+		List<Soldat> cSoldats = new ArrayList();
+		cSoldats = this.getSoldats();
+		while(!cGaulois.isEmpty() && !cSoldats.isEmpty()) {
+			Personnage p = this.choisirFrappeur(combattants);
+			if(p instanceof Gaulois) {
+				Soldat s = this.choisirSoldat(cSoldats);
+				p.frapper(s);
+				if (s.getForce() <= 0) {
+					combattants.remove(s);
+					cSoldats.remove(s);
+				}
+			} else {
+				Gaulois g = this.choisirGaulois(cGaulois);
+				p.frapper(g);
+				if (g.getForce() <= 0) {
+					combattants.remove(g);
+					cGaulois.remove(g);
+				}
+			}
+		}
 	}
 
 	public String donnerResultat() {
@@ -69,6 +102,24 @@ public class Embuscades extends Batailles {
             }
         }
         return selectedElements;
+	}
+	
+	public Personnage choisirFrappeur(List<Personnage> p) {
+		Random random = new Random();
+		int randomIndex = random.nextInt(p.size());
+		return p.get(randomIndex);
+	}
+	
+	public Gaulois choisirGaulois(List<Gaulois> g) {
+		Random random = new Random();
+		int randomIndex = random.nextInt(g.size());
+		return g.get(randomIndex);
+	}
+	
+	public Soldat choisirSoldat(List<Soldat> s) {
+		Random random = new Random();
+		int randomIndex = random.nextInt(s.size());
+		return s.get(randomIndex);
 	}
 	
 }

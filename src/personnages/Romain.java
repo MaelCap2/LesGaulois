@@ -3,25 +3,26 @@ package personnages;
 public class Romain extends Personnage {
 	private boolean[] equipement;
 	
-	public Romain(String n, double f, boolean casque, boolean plastron, boolean bouclier) {
+	public Romain(String n, double f) {
 		super(n, f);
 		this.equipement = new boolean[3];
+	}
+	
+	public String equipement(boolean casque, boolean plastron, boolean bouclier) {
 		this.equipement[0] = casque;
+		String texte = "";
 		if(this.equipement[0] == true) {
-			System.out.println("Le soldat " + this.getNom() + " s'équipe avec un casque.");
+			texte = texte + "- Le soldat " + this.getNom() + " s'équipe avec un casque.\n";
 		}
 		this.equipement[1] = plastron;
 		if(this.equipement[1] == true) {
-			System.out.println("Le soldat " + this.getNom() + " s'équipe avec un plastron.");
+			texte = texte + "- Le soldat " + this.getNom() + " s'équipe avec un plastron.\n";
 		}
 		this.equipement[2] = bouclier;
 		if(this.equipement[2] == true) {
-			System.out.println("Le soldat " + this.getNom() + " s'équipe avec un bouclier.");
+			texte = texte + "- Le soldat " + this.getNom() + " s'équipe avec un bouclier.\n";
 		}
-	}
-	
-	public Romain(String n, double f) {
-		super(n, f);
+		return texte;
 	}
 	
 	public boolean getEquipement(int i) {

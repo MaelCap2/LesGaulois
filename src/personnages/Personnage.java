@@ -22,7 +22,7 @@ public abstract class Personnage {
 	}
 	
 	public void parler(String t) {
-		System.out.println(donnerAuteur() + getNom() + " : << " + t + " >>.");
+		System.out.println(donnerAuteur() + getNom() + " : << " + t + " >>.\n");
 	}
 	
 	public abstract void frapper(Personnage p);

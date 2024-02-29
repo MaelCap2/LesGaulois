@@ -16,7 +16,7 @@ public class Conteur {
 		System.out.println(b.decrireContexte());
 		System.out.println(b.chosirCombattants(b.chosirGaulois(b.getNbGaulois(), b.getVillage()), b.chosirSoldats(b.getNbSoldats(), b.getCamp())));
 		System.out.println(b.preparerCombat());
-		System.out.println(b.decrireCombat());
+		b.decrireCombat();
 		System.out.println(b.donnerResultat());
 	}
 }
